@@ -1,35 +1,77 @@
 const mediaQuery = "(max-width:640px)";
 const mediaQueryWatcher = window.matchMedia(mediaQuery);
 
+var procesando = false;
+var proceso = 0;
 
+function mostrarProceso()
+{
+    if (proceso > 0)
+    {
+        switch (proceso)
+        {
+            case 1:
+                document.querySelector("#calcOrinaRes").style.visibility = "visible";
+                break;
+            case 2:
+                document.querySelector("#schwartzRes").style.visibility = "visible";
+                break;
+            case 3:
+                document.querySelector("#schwartzmRes").style.visibility = "visible";
+                break;
+        }
+
+    }
+    procesando = false;
+    proceso = 0;
+    document.querySelector("#blocker").remove();
+    document.querySelector("#loadingbar").remove();
+
+
+}
+function mostrarCargando(proc)
+{
+    //Registra que estamos haciendo para visibilizar el resultado despues.
+    proceso = proc;
+    //bloquea los demas procesos.
+    procesando = true;
+    const blocker = document.createElement("div");
+    blocker.id = "blocker";
+    const container = document.createElement("div");
+    container.classList.add("container-bar");
+    container.id = "loadingbar";
+    const loading = document.createElement("div");
+    loading.classList.add("loading-bar");
+
+    container.appendChild(loading);
+    loading.addEventListener("animationend", mostrarProceso);
+    document.body.appendChild(blocker);
+    document.body.appendChild(container);
+    return;
+}
 function mensajeError(mensaje)
 {
     //Función global que muestra un error en la pantalla.
+    const blocker = document.createElement("div");
+    blocker.id = "blocker";
+
     const cartel = document.createElement("div");
-    cartel.style.position = "absolute";
-    cartel.style.backgroundColor = "red";
-    cartel.style.width = "30%";
-    cartel.style.maxWidth = "25rem";
-    cartel.style.height = "20%";
-    cartel.style.maxHeight="8rem";
-    cartel.style.top = "50%";
-    cartel.style.left = "35%";
-    cartel.style.zIndex="999";
+    cartel.id = "errorCartel";
     cartel.innerHTML = mensaje;
-    cartel.style.opacity = 1;
 
 
     const boton = document.createElement('button');
     boton.innerHTML="Aceptar";
+    boton.id = "errorBoton";
 
     boton.onclick = (function(){
-        alert(boton.parentElement.innerHTML);
-        document.removeChild(boton.parentElement);
+        boton.parentElement.remove();
+        blocker.remove();
     });
 
     cartel.appendChild(boton);
+    document.body.appendChild(blocker);
     document.body.appendChild(cartel);
-    console.error("Error: " + mensaje);
     return;
 }
 
@@ -63,6 +105,9 @@ document.querySelector(".nav-btn").addEventListener("click", function()
     }
 });
 
+
+
+
 var cobtn = document.querySelector("#calcOrinabtn");
 if (cobtn)
 {
@@ -72,10 +117,9 @@ if (cobtn)
 
         //Limpiamos el label de resultado por si da error.
         clCrlbl.innerHTML = "";
-        clCrlbl.style.backgroundImage="";
+        clCrlbl.style.visibility="hidden";
         //Validamos los datos.
         var crU = document.querySelector("#CrU").value;
-        console.log(crU);
 
         if (!isFinite(crU) || crU <= 0 || isNaN(crU))
         {
@@ -107,7 +151,7 @@ if (cobtn)
         //Todo eso lo dividimos por crP y obtenemos cuantos ml de plasma por minuto
         //aclara nuestro paciente de creatinina.
         var clCr = (crU * (volUrinario / 1440)) / crP;
-        console.log(clCr);
+
 
         //Lo dividimos por la superficie corporal del paciente para tenerlo en ml/min/m2
         //y despues lo multiplicamos por 1.73 para estandarizarlo.
@@ -118,75 +162,142 @@ if (cobtn)
         //Mostramos el resultado.
 
         clCrlbl.innerHTML = clCr + " ml/min/1.73m" + "<sup>2</sup>";
-        clCrlbl.style.backgroundImage = "url('../static/fondoh6.png')";
-        clCrlbl.style.backgroundRepeat = "no-repeat";
-        clCrlbl.style.backgroundSize = "70% 100%";
-        clCrlbl.style.backgroundPosition = "center";
+        mostrarCargando(1);
 
     });
 }
-var sobtn = document.querySelector("#schwartzbtn");
-if (sobtn)
+
+var smbtn = document.querySelector("#schwartzmbtn");
+
+if (smbtn)
 {
-    sobtn.addEventListener("click", function(){
+    smbtn.addEventListener("click", function()
+    {
         //Cliqueo sobre el boton de calculo de clearence.
-        console.log("lllega");
-            var swlbl = document.querySelector("#schwartzRes");
+        if (!procesando)
+        {
+            var smlbl = document.querySelector("#schwartzmRes");
         
-            //Limpiamos el label de resultado por si da error.
-            swlbl.innerHTML = "";
-            swlbl.style.backgroundImage="";
+            //ocultamos el label de resultado por si da error.
+            smlbl.innerHTML="";
+            smlbl.style.visibility = "hidden";
 
-            //Validamos los datos.
-            var k = 0;
-            var kl = document.querySelectorAll("input[name='sok']");
-            for (var i in kl)
-            {
-                if (kl[i].checked)
-                {
-                    k = kl[i].value;
-                    break;
-                }
-            }
-
-            if (k == 0)
-            {
-                mensajeError("Debes seleccionar la edad de tu paciente.")
-                return;
-            }
-            console.log(k);
-
-            var talla = document.querySelector("#Talla").value;
-            console.log(talla);
+            var talla = document.querySelector("#Tallam").value;
         
             if (!isFinite(talla) || talla <= 0 || isNaN(talla))
             {
                 mensajeError("Debes ingresar un valor de Talla valido en cm.")
                 return;
             }
-            var crP = document.querySelector("#CrPso").value;
+            var crP = document.querySelector("#CrPsm").value;
             if (!isFinite(crP) || crP <= 0 || isNaN(crP))
             {
                 mensajeError("Debes ingresar un valor de Creatinina Plasmática valido en mg/dl.")
                 return;
             }
-            console.log(crP);
 
-         
+        
             //Todos los datos correctos, calculamos el ClCr.
-            var clCr = (talla * k) / crP;
-            console.log(clCr);
+            var clCr = (talla * 0.41) / crP;
 
         
             clCr = Math.round(clCr);
         
             //Mostramos el resultado.
         
-            swlbl.innerHTML = clCr + " ml/min/1.73m" + "<sup>2</sup>";
-            swlbl.style.backgroundImage = "url('../static/fondoh6.png')";
-            swlbl.style.backgroundRepeat = "no-repeat";
-            swlbl.style.backgroundSize = "70% 100%";
-            swlbl.style.backgroundPosition = "center";
-        
+            smlbl.innerHTML = clCr + " ml/min/1.73m" + "<sup>2</sup>";
+            mostrarCargando(3);
+        }
+
+    });
+}
+
+var sobtn = document.querySelector("#schwartzbtn");
+if (sobtn)
+{
+    sobtn.addEventListener("click", function(){
+        //Cliqueo sobre el boton de calculo de clearence.
+            if (!procesando)
+            {
+                var swlbl = document.querySelector("#schwartzRes");
+            
+                //ocultamos el label de resultado por si da error.
+                swlbl.innerHTML="";
+                swlbl.style.visibility = "hidden";
+
+                //Validamos los datos.
+                var k = 0;
+                var kl = document.querySelectorAll("input[name='sok']");
+                for (var i in kl)
+                {
+                    if (kl[i].checked)
+                    {
+                        k = kl[i].value;
+                        break;
+                    }
+                }
+
+                if (k == 0)
+                {
+                    mensajeError("Debes seleccionar la edad de tu paciente.")
+                    return;
+                }
+
+                var talla = document.querySelector("#Talla").value;
+            
+                if (!isFinite(talla) || talla <= 0 || isNaN(talla))
+                {
+                    mensajeError("Debes ingresar un valor de Talla valido en cm.")
+                    return;
+                }
+                var crP = document.querySelector("#CrPso").value;
+                if (!isFinite(crP) || crP <= 0 || isNaN(crP))
+                {
+                    mensajeError("Debes ingresar un valor de Creatinina Plasmática valido en mg/dl.")
+                    return;
+                }
+
+            
+                //Todos los datos correctos, calculamos el ClCr.
+                var clCr = (talla * k) / crP;
+
+            
+                clCr = Math.round(clCr);
+            
+                //Mostramos el resultado.
+            
+                swlbl.innerHTML = clCr + " ml/min/1.73m" + "<sup>2</sup>";
+                mostrarCargando(2);
+            }
+        });
+    }
+
+    var sugerenciasbtn = document.querySelector("#sugebtn");
+
+    if (sugerenciasbtn)
+    {
+        sugerenciasbtn.addEventListener("click", function()
+        {
+            
+            //Validamos
+
+            var nombre = document.sugeform.nombre.value;
+            if (nombre.length < 2)
+            {
+                mensajeError("Debes ingresar un nombre valido en el formulario.");
+                preventDefault();
+                return;
+            }
+
+            var sugerencia = document.sugeform.sugerencia.value;
+
+            if (sugerencia.length < 20)
+            {
+                mensajeError("Debes ingresar una sugerencia valida con al menos 20 caracteres.");
+                event.preventDefault();
+                return;
+            }
+
+
         });
     }

@@ -16,7 +16,7 @@
         <div class="nav-btn">
             <img src="static/menu.png" alt="boton menu" width="100%" height="100%">
         </div>
-        <img src="static/kid.png" class="logo" height="98%">
+        <img src="static/riñon.png" class="logo" height="98%">
     </header>
     <nav class="nav">
         <a  class="actual">Home</a>
@@ -33,7 +33,7 @@
         <p>Video de repaso respecto al filtrado glomerular de creatinina e inulina.</p>
         <center>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/L5MFBtiTTcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </center>    
+        </center>  
     </main>
     <div class="aside">
         <a href="https://www.kidney.org/"><img src="static/kidney.png" width="100%" alt="Link a www.kidney.org"></a>
@@ -42,37 +42,6 @@
     <div class="margen1"></div>
     <div class="margen2"></div>
     <footer class="footer">Elaborado para curso full-stack python codo a codo 2022 - Leandro Pastori</footer>
-<script>
-    const mediaQuery = "(max-width:640px)";
-    const mediaQueryWatcher = window.matchMedia(mediaQuery);
-
-    mediaQueryWatcher.addEventListener('change', event => {
-        if (event.matches)
-        {
-            // Mide menos de 640, nos aseguramos de no mostrar la nav.
-            document.querySelector('nav').style.display="none";
-            document.querySelector('.logo').style.display="none";
-        }
-        else
-        {
-            document.querySelector('nav').style.display="inline";
-            document.querySelector('.logo').style.display="block";        
-        }
-
-    });
-    document.querySelector(".nav-btn").addEventListener("click", function()
-    {
-        var nav = document.querySelector('nav');
-        if (nav.style.display == 'block')
-        {
-            nav.style.display = "none";
-        }
-        else
-        {
-            nav.style.display = "block";
-
-        }
-    });
-</script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
