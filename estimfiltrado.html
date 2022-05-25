@@ -19,25 +19,43 @@
         <img src="static/kid.png" class="logo" height="98%">
     </header>
     <nav class="nav">
-        <a  class="actual">Home</a>
-        <a href="calcorina.html">Calcular Filtrado</a>
+        <a  href="index.html">Home</a>
+        <a href="calcorina.html" class="actual">Calcular Filtrado</a>
         <a href="estimfiltrado.html">Estimar Filtrado</a>
         <a href="sugerencias.html">Sugerencias</a>
     </nav>
     <main class="main">
-        <h2>Filtrado Glomerular</h2>
-        Esta pagina esta dise;ada para facilitar la realizacion de calculos para cuantificar o estimar el filtrado glomerular.
-        El filtrado glomerular es el volumen de fluido filtrado por unidad de tiempo desde los capilares glomerulares renales hacia la capsula de bowman y es una de las medidas que reflejan la funcionalidad del riñon.
-        En Pediatria su valor puede aproximarse a partir del clearence urinario de creatinina o estimarse mediante una ecuación según la creatininemia plásmatica.
+        <h2>Estimacion de Filtrado Glomerular <i class="fa-solid fa-calculator"></i></h2>
+        
+        <h3>Formula de Schwartz</h3>
+        <fieldset class="schwartzFs">
+            
+            <label for="sornpt">NPT menor de 1 año:</label><input type="radio" value="0.33" name="sok" id="sornpt">
+            <label for="sornpt">NT menor de 1 año:</label><input type="radio" value="0.45" name="sok" id="sornt">
+            <label for="sornpt">Entre 2 y 12 años:</label><input type="radio" value="0.55" name="sok" id="so212">
+            <label for="sornpt">Femenino entre 13 y 21 años:</label><input type="radio" value="0.55" name="sok" id="so13f">
+            <label for="sornpt">Masculino entre 13 y 21 años:</label><input type="radio" value="0.7" name="sok" id="so13m">
+            
+            <label for="Talla">Talla(cm):</label>
+            <input type="number" id="Talla" name="Talla" min="0">
+            <label for="CrPso">Creatinina Plasmatica(mg/dl):</label>
+            <input type="number" id="CrPso" name="CrPso" min="0">
+            <button id="schwartzbtn" class="btnAceptar" title="FGR=Talla * K / CrP">Calcular</button>
+            <label id="schwartzRes">150 ml/min/1.73</label>
+        </fieldset>
 
-        <p>Video de repaso respecto al filtrado glomerular de creatinina e inulina.</p>
-        <center>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/L5MFBtiTTcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </center>    
+        <h3>Formula de Schwartz (Modificada)</h3><!--usa 0.41-->
+        <fieldset class="schwartzmFs">
+            <label for="Tallam">Talla(cm):</label>
+            <input type="number" id="Tallam" name="Tallam" min="0">
+            <label for="CrPsm">Creatinina Plasmatica(mg/dl):</label>
+            <input type="number" id="CrPsm" name="CrPsm" min="0">
+            <button id="schwartzmbtn" class="btnAceptar" title="FGR=Talla * K / CrP">Calcular</button>
+            <label id="schwartzmRes">150 ml/min/1.73</label>
+        </fieldset>
     </main>
     <div class="aside">
         <a href="https://www.kidney.org/"><img src="static/kidney.png" width="100%" alt="Link a www.kidney.org"></a>
- 
     </div>
     <div class="margen1"></div>
     <div class="margen2"></div>
@@ -56,7 +74,8 @@
         else
         {
             document.querySelector('nav').style.display="inline";
-            document.querySelector('.logo').style.display="block";        
+            document.querySelector('.logo').style.display="block";      
+            
         }
 
     });
@@ -70,7 +89,7 @@
         else
         {
             nav.style.display = "block";
-
+            alert(parseInt("131",8));
         }
     });
 </script>

@@ -19,25 +19,29 @@
         <img src="static/kid.png" class="logo" height="98%">
     </header>
     <nav class="nav">
-        <a  class="actual">Home</a>
-        <a href="calcorina.html">Calcular Filtrado</a>
+        <a  href="index.html">Home</a>
+        <a href="calcorina.html" class="actual">Calcular Filtrado</a>
         <a href="estimfiltrado.html">Estimar Filtrado</a>
         <a href="sugerencias.html">Sugerencias</a>
     </nav>
     <main class="main">
-        <h2>Filtrado Glomerular</h2>
-        Esta pagina esta dise;ada para facilitar la realizacion de calculos para cuantificar o estimar el filtrado glomerular.
-        El filtrado glomerular es el volumen de fluido filtrado por unidad de tiempo desde los capilares glomerulares renales hacia la capsula de bowman y es una de las medidas que reflejan la funcionalidad del riñon.
-        En Pediatria su valor puede aproximarse a partir del clearence urinario de creatinina o estimarse mediante una ecuación según la creatininemia plásmatica.
+        <h2>Calcular Clearence de Creatinina <i class="fa-solid fa-calculator"></i></h2>
+        <fieldset class="calcorinafs">
+            <label for="CrU">Creatinina Urinaria(mg/dl):</label>
+            <input type="number" id="CrU" name="CrU" min="0">
+            <label for="CrP">Creatinina Plasmatica(mg/dl):</label>
+            <input type="number" id="CrP" name="CrP" min="0">
+            <label for="VolU">Volumen Urinario(ml):</label>
+            <input type="number" id="VolU" name="VolU" min="0">
+            <label for="SupC">Superficie Corporal(m<sup>2</sup>):</label>
+            <input type="number" name="SupC" id="SupC" min="0">
+            <button id="calcOrinabtn" class="btnAceptar" title="ClCr=CrU * Volumen Urinario / 1440 / CrP * 1.73/Superficie">Calcular</button>
+            <label id="calcOrinaRes">150 ml/min/1.73</label>
+        </fieldset>
 
-        <p>Video de repaso respecto al filtrado glomerular de creatinina e inulina.</p>
-        <center>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/L5MFBtiTTcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </center>    
     </main>
     <div class="aside">
         <a href="https://www.kidney.org/"><img src="static/kidney.png" width="100%" alt="Link a www.kidney.org"></a>
- 
     </div>
     <div class="margen1"></div>
     <div class="margen2"></div>

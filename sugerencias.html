@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculador de Filtrado Glomerular</title>
     <link rel="STYLESHEET" href="styles/style.css">
-    <script src="https://kit.fontawesome.com/1c68f3bd6a.js" crossorigin="anonymous"></script>
+
 </head>
 <body class="grid-container">
     <header class="header">
@@ -14,30 +14,31 @@
         <p class="titulo">Calculadora de ClCr<p>
 
         <div class="nav-btn">
-            <img src="static/menu.png" alt="boton menu" width="100%" height="100%">
+            <p>Menu</p>
         </div>
         <img src="static/kid.png" class="logo" height="98%">
     </header>
     <nav class="nav">
-        <a  class="actual">Home</a>
+        <a href="index.html">Home</a>
         <a href="calcorina.html">Calcular Filtrado</a>
         <a href="estimfiltrado.html">Estimar Filtrado</a>
-        <a href="sugerencias.html">Sugerencias</a>
+        <a  class="actual">Sugerencias</a>
     </nav>
     <main class="main">
-        <h2>Filtrado Glomerular</h2>
-        Esta pagina esta dise;ada para facilitar la realizacion de calculos para cuantificar o estimar el filtrado glomerular.
-        El filtrado glomerular es el volumen de fluido filtrado por unidad de tiempo desde los capilares glomerulares renales hacia la capsula de bowman y es una de las medidas que reflejan la funcionalidad del riñon.
-        En Pediatria su valor puede aproximarse a partir del clearence urinario de creatinina o estimarse mediante una ecuación según la creatininemia plásmatica.
+        <h2>Sugerencias</h2>
+        <p>Si queres comunicarte con nosotros para reportar un error, sugerir un cambio o proponer otra herramienta no dudes en hacerlo.</p>
+        <p>Esperamos tu sugerencia!</p>
 
-        <p>Video de repaso respecto al filtrado glomerular de creatinina e inulina.</p>
-        <center>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/L5MFBtiTTcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </center>    
+        <fieldset class="sugerenciafs">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" placeholder="Escribe tu nombre..." required>
+            <label for="sugerencia">Sugerencia:</label>
+            <textarea name="sugerencia" placeholder="Escribe tu sugerencia..." rows="8" cols="50" required></textarea>
+            <input type="submit" value="Enviar" class="btnAceptar">
+        </fieldset>
     </main>
     <div class="aside">
         <a href="https://www.kidney.org/"><img src="static/kidney.png" width="100%" alt="Link a www.kidney.org"></a>
- 
     </div>
     <div class="margen1"></div>
     <div class="margen2"></div>
@@ -51,12 +52,10 @@
         {
             // Mide menos de 640, nos aseguramos de no mostrar la nav.
             document.querySelector('nav').style.display="none";
-            document.querySelector('.logo').style.display="none";
         }
         else
         {
-            document.querySelector('nav').style.display="inline";
-            document.querySelector('.logo').style.display="block";        
+            document.querySelector('nav').style.display="inline";        
         }
 
     });

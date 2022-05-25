@@ -2,90 +2,438 @@
 {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
-body {
+html
+{
     height: 100%;
+}
+body{
+    height: 100%;
+    background-color: rgb(26, 25, 25);;
+}
+iframe{
+    background-color: rgb(57, 124, 115);
+    margin: 1rem;
 }
 .grid-container
 {
     display: grid;
-    height: 55rem;
+    height: 100%;
+    background-color:rgb(26, 25, 25);;
+    
 }
-
+.titulo
+{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+    color: rgb(10, 12, 12);
+}
+.titulo::first-letter
+{
+    font-weight: bolder;
+    font-size: 3.5rem;
+    color: black;
+}
 .header
 {
-    background-color: red;
+    /*background-color: rgb(57, 124, 115) ;*/
+    background: linear-gradient(to right ,rgba(162, 171, 177, 1), rgba(57,124,115,1));
+    border-right:   0.2rem  solid white;
+    border-left:   0.2rem  solid white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y:auto;
+    box-shadow: inset 0px 0px 10px black;
+    
+}
+.header img {
+    float:right;
+    display:block;
+    padding-right: 0.1rem;
+    border: 0.1rem solid black;
 }
 .main 
 {
-    background-color:violet;
+    background-color: rgb(199, 206, 202);
+    padding: 0.5rem;
+    border:   0.1rem  solid black;
+    border-right:   0.2rem  solid white;
+    box-shadow: inset 0px 0px 10px black;
+    
+    
+
 }
 .aside
 {
-    background-color:cyan;
+    background-color:rgb(73, 90, 90);
+    border:   0.1rem  solid black;
+    border-right: 0;
+    border-left: 0.2rem solid white;
+    box-shadow: inset 0px 0px 10px black;
+    
+}   
+
+.aside a img:hover{
+    box-shadow: 0px 0px 10px black ;
 }
 .footer 
 {
-    background-color: orange;
+    box-shadow: inset 0px 0px 10px black;
+    
+    background-color: rgb(108, 148, 146);
+    border-left: 0.2rem solid white;
+    border-right:   0.2rem  solid white;
+    text-align: center;
 }
+.nav a 
+{
+    color: white;
+    margin: 0rem 1rem;    
+    user-select: none;
+    text-decoration: none;
+    vertical-align: middle;
+}
+.nav a.actual 
+{
+    color: rgb(161, 185, 185);
+    text-decoration: none;
+    
+}
+.nav a:not(.actual):hover
+{
+    color: rgb(106, 161, 161);
+    transition: all linear 0.5s;
+    
+}
+
+.sugerenciafs {
+    display: grid;
+    grid-template-rows: minmax(1rem,2rem) minmax(5rem,15rem) minmax(1rem,2rem);
+    grid-template-columns: minmax(1rem, 1fr) minmax(10rem, 5fr);
+    grid-gap:1rem;
+    margin: 0.5rem;
+    padding: 1rem;
+    border-width: 0.5rem;
+    border-style:double;
+    border-color: darkgray;
+}
+.sugerenciafs label[for="nombre"]
+{
+    grid-row: 1/2;
+    grid-column: 1/2;
+}
+.sugerenciafs label[for="sugerencia"]
+{
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+.sugerenciafs textarea {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    resize:  none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+
+}
+
+.sugerenciafs input[name="nombre"]{
+    grid-row: 1/2;
+    grid-column: 2/3;
+    border-radius: 0.5rem;
+    box-shadow: 0.2rem;
+    padding: 0.4rem;
+}
+fieldset input[type="number"]:focus, fieldset textarea:focus, fieldset input[type="text"]:focus {
+    box-shadow: 0rem 0rem 0.9rem   rgb(57, 124, 115);
+    transition: all 0.5s linear;
+}
+.sugerenciafs input[type="submit"]
+{
+    grid-row: 3/4;
+    grid-column: 1/3;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: groove;
+    border-radius: 0.5rem;
+    width: 50%;
+    justify-self: center;
+}
+/*
+.sugerenciafs textarea:focus
+{
+    box-shadow: 0rem 0rem 0.9rem   rgb(57, 124, 115);
+    transition: all 0.5s linear;
+}*/
+.btnAceptar:hover
+{
+    box-shadow: 0rem 0rem 0.9rem   rgb(57, 124, 115);
+    transition: all 0.5s linear;
+}
+.btnAceptar:active
+{
+    background-color:  rgb(57, 124, 115);
+
+}
+nav
+{
+    border-top: 0.2rem solid black;
+    border-left: 0.2rem solid white; 
+    border-right:   0.2rem  solid white;
+    background-color: rgb(1, 37, 37);
+  
+}
+.calcorinafs 
+{
+    display:grid;
+    grid-template-rows: minmax(1rem,2rem) minmax(1rem,2rem) minmax(1rem,2rem) minmax(1rem,2rem) minmax(1rem,2rem) minmax(1rem,2rem);
+    grid-template-columns: minmax(1rem, 2fr) minmax(1rem, 1fr);
+    grid-row-gap: 1rem; 
+    max-width: 26rem;
+    margin: 2rem auto;
+    padding:0.5rem;
+}
+#calcOrinaRes
+{
+    grid-row: 6/7;
+    grid-column: 1/3;
+    text-align: center;
+    font-weight: bold;
+}
+#calcOrinabtn
+{
+    grid-row: 5/6;
+    grid-column: 1/3;
+    font-weight: bold;
+    width: 50%;
+    justify-self: center;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: groove;
+    border-radius: 0.5rem;
+}
+
 @media screen and ( max-width: 640px) 
 {
+    .nav-btn
+    {
+        display: block;
+        height: 5rem;
+        width: 5rem;
+
+        align-self: center;
+        background-color:transparent;
+        border-style: none;
+        border-radius: 4rem;
+
+    }
+    .nav-btn img 
+    {
+        border-style: none;
+    }
+    .nav-btn:hover
+    {
+        transition: background-color 1s linear;
+        background-color: rgb(34, 58, 136);
+        cursor: pointer;
+    }
+    .nav-btn:active
+
+    {
+        background-color: aqua;
+    }
+    nav 
+    {
+        display: none;
+    }
+    nav a {
+        display: block;
+    }
+    nav a::before{
+        content : "- ";
+    }
+    .nav
+    {
+        grid-column: 1/3;
+        grid-row:2/3;
+    }
     .grid-container
     {
-        grid-template-columns: 10rem 1fr;
-        grid-template-rows: 7rem 1fr 2rem;
+        grid-template-columns: minmax(0px,10rem) 1fr;
+        grid-template-rows: minmax(min-content,7rem) max-content 1fr 2rem;
+        height: 100%;
+        align-content: stretch;
+        overflow: hidden;
     }
-
+    
     .header
     {
         grid-column: 1/3;
-        grid-row: 1/1;
+        grid-row: 1/2;
+        display:flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.2rem;
+        overflow-x: hidden;
     }
     .main 
     {
-        grid-column: 2/2;
-        grid-row: 2/2;
-    }
-    .aside
+        grid-column: 2/3;
+        grid-row: 3/4;
+        overflow-y: auto;
+    }   .aside
     {
         grid-column: 1/2;
-        grid-row: 2/2;
+        grid-row: 3/4;
+        
     }
     .footer 
     {
         grid-column: 1 / 3;
-        grid-row: 3/3;
+        grid-row: 4/5;
+    }
+    fieldset{
+        display: grid;
+        grid-template-rows: minmax(1rem,2rem) minmax(1rem,2rem) minmax(1rem,2rem) minmax(5rem,15rem) minmax(1rem,2rem);
+        grid-template-columns: minmax(2rem, 1fr);
+        grid-gap:1rem;
+    }
+    fieldset label[for="nombre"]
+    {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+    fieldset label[for="sugerencia"]
+    {
+        grid-row: 3/4;
+        grid-column: 1/2;
+    }
+    fieldset textarea {
+        grid-row: 4/5;
+        grid-column: 1/2;
+    
+    }
+    
+    fieldset input[name="nombre"]{
+        grid-row: 2/3;
+        grid-column: 1/2;
+    }
+    fieldset input[type="submit"]
+    {
+        grid-row: 5/6;
+        grid-column: 1/2;
+    }
+    
+}
+    @media screen and ( min-width:640px) and (max-width: 1024px) 
+    
+    
+    {
+        .nav-btn
+        {
+            display: none;
+        }
+        nav 
+        {
+            display:inline;
+            grid-column: 1/3;
+            grid-row:2/3;
+        }
+
+        .grid-container
+        {
+            grid-template-columns: minmax(0px,10rem) 1fr;
+            grid-template-rows: minmax(min-content,7rem) max-content 1fr 2rem;
+            height: 100%;
+            align-content: stretch;
+            overflow: hidden;
+        }
+    
+        .header
+        {
+            grid-column: 1/3;
+            grid-row: 1/2;
+    
+        }
+        .main 
+        {
+            grid-column: 2/3;
+            grid-row: 3/4;
+    
+        }
+        .aside
+        {
+            grid-column: 1/2;
+            grid-row: 3/4;
+    
+        }
+        .footer 
+        {
+            grid-column: 1 / 3;
+            grid-row: 4/5;
+        }
+    
     }
 
-}
-@media screen and ( min-width: 640px) 
+@media screen and ( min-width: 1024px) 
 {
+    .nav-btn
+   {
+       display:none;
+   }
+
+   nav 
+   {
+       display:inline;
+       grid-column: 2/4;
+       grid-row:2/3;
+   }
     .grid-container
     {
-        grid-template-columns:1fr 10rem 80rem 1fr;
-        grid-template-rows: 7rem 1fr 2rem;
+        grid-template-columns:minmax(0px,1fr) 10rem minmax(30rem,50rem) minmax(0px,1fr);
+        grid-template-rows: minmax(0px,6rem) max-content 1fr 1.5rem;
     }
     
     .header
     {
         grid-column: 2/4;
-        grid-row: 1/1;
+        grid-row: 1/2;
     }
     .main 
     {
         grid-column: 3/4;
-        grid-row: 2/2;
+        grid-row: 3/4;
+        overflow-y:auto;
     }
     .aside
     {
         grid-column: 2/3;
-        grid-row: 2/2;
+        grid-row: 3/4;
     }
     .footer 
     {
         grid-column: 2 / 4;
-        grid-row: 3/3;
+        grid-row: 4/5;
     }
+    .margen1
+    {
+        grid-column: 1 / 2;
+        grid-row: 1/5;
+        background-color: rgb(26, 25, 25);
+        overflow: hidden;
+    }
+    .margen2
+    {
+        grid-column: 4 / 5;
+        grid-row: 1/5;
+        overflow: hidden;
+        background-color: rgb(26, 25, 25);
+    }
+    
 }
 .container-bar
 {
@@ -108,7 +456,7 @@ body {
     animation-duration: 2s;
     animation-timing-function: ease;
     animation-iteration-count: 2;
-    animation: loadingbar 2s ease 2, final;
+    animation: loadingbar 2s ease 2;
     background-color: green;
     animation-fill-mode: forwards;
     width: 10%;
