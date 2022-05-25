@@ -27,11 +27,11 @@
     <main class="main">
         <h2>Estimacion de Filtrado Glomerular <i class="fa-solid fa-calculator"></i></h2>
         
-        <h3>Formula de Schwartz</h3>
+        <h3 id="schwartztlt">Formula de Schwartz</h3>
         <fieldset class="schwartzFs">
-            
+
             <label for="sornpt">NPT menor de 1 año:</label><input type="radio" value="0.33" name="sok" id="sornpt">
-            <label for="sornpt">NT menor de 1 año:</label><input type="radio" value="0.45" name="sok" id="sornt">
+            <label for="sornpt">NT menor de 1 año:</label><input type="radio" value="0.45" name="sok" id="sornt" >
             <label for="sornpt">Entre 2 y 12 años:</label><input type="radio" value="0.55" name="sok" id="so212">
             <label for="sornpt">Femenino entre 13 y 21 años:</label><input type="radio" value="0.55" name="sok" id="so13f">
             <label for="sornpt">Masculino entre 13 y 21 años:</label><input type="radio" value="0.7" name="sok" id="so13m">
@@ -41,7 +41,7 @@
             <label for="CrPso">Creatinina Plasmatica(mg/dl):</label>
             <input type="number" id="CrPso" name="CrPso" min="0">
             <button id="schwartzbtn" class="btnAceptar" title="FGR=Talla * K / CrP">Calcular</button>
-            <label id="schwartzRes">150 ml/min/1.73</label>
+            <label id="schwartzRes"></label>
         </fieldset>
 
         <h3>Formula de Schwartz (Modificada)</h3><!--usa 0.41-->
@@ -51,7 +51,7 @@
             <label for="CrPsm">Creatinina Plasmatica(mg/dl):</label>
             <input type="number" id="CrPsm" name="CrPsm" min="0">
             <button id="schwartzmbtn" class="btnAceptar" title="FGR=Talla * K / CrP">Calcular</button>
-            <label id="schwartzmRes">150 ml/min/1.73</label>
+            <label id="schwartzmRes"></label>
         </fieldset>
     </main>
     <div class="aside">
@@ -60,38 +60,6 @@
     <div class="margen1"></div>
     <div class="margen2"></div>
     <footer class="footer">Elaborado para curso full-stack python codo a codo 2022 - Leandro Pastori</footer>
-<script>
-    const mediaQuery = "(max-width:640px)";
-    const mediaQueryWatcher = window.matchMedia(mediaQuery);
-
-    mediaQueryWatcher.addEventListener('change', event => {
-        if (event.matches)
-        {
-            // Mide menos de 640, nos aseguramos de no mostrar la nav.
-            document.querySelector('nav').style.display="none";
-            document.querySelector('.logo').style.display="none";
-        }
-        else
-        {
-            document.querySelector('nav').style.display="inline";
-            document.querySelector('.logo').style.display="block";      
-            
-        }
-
-    });
-    document.querySelector(".nav-btn").addEventListener("click", function()
-    {
-        var nav = document.querySelector('nav');
-        if (nav.style.display == 'block')
-        {
-            nav.style.display = "none";
-        }
-        else
-        {
-            nav.style.display = "block";
-            alert(parseInt("131",8));
-        }
-    });
-</script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

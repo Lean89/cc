@@ -30,13 +30,13 @@
             <label for="CrU">Creatinina Urinaria(mg/dl):</label>
             <input type="number" id="CrU" name="CrU" min="0">
             <label for="CrP">Creatinina Plasmatica(mg/dl):</label>
-            <input type="number" id="CrP" name="CrP" min="0">
+            <input type="number" id="CrP" name="CrP" min="0" max="300">
             <label for="VolU">Volumen Urinario(ml):</label>
-            <input type="number" id="VolU" name="VolU" min="0">
+            <input type="number" id="VolU" name="VolU" min="0" max="7000">
             <label for="SupC">Superficie Corporal(m<sup>2</sup>):</label>
             <input type="number" name="SupC" id="SupC" min="0">
             <button id="calcOrinabtn" class="btnAceptar" title="ClCr=CrU * Volumen Urinario / 1440 / CrP * 1.73/Superficie">Calcular</button>
-            <label id="calcOrinaRes">150 ml/min/1.73</label>
+            <label id="calcOrinaRes"></label>
         </fieldset>
 
     </main>
@@ -46,37 +46,6 @@
     <div class="margen1"></div>
     <div class="margen2"></div>
     <footer class="footer">Elaborado para curso full-stack python codo a codo 2022 - Leandro Pastori</footer>
-<script>
-    const mediaQuery = "(max-width:640px)";
-    const mediaQueryWatcher = window.matchMedia(mediaQuery);
-
-    mediaQueryWatcher.addEventListener('change', event => {
-        if (event.matches)
-        {
-            // Mide menos de 640, nos aseguramos de no mostrar la nav.
-            document.querySelector('nav').style.display="none";
-            document.querySelector('.logo').style.display="none";
-        }
-        else
-        {
-            document.querySelector('nav').style.display="inline";
-            document.querySelector('.logo').style.display="block";        
-        }
-
-    });
-    document.querySelector(".nav-btn").addEventListener("click", function()
-    {
-        var nav = document.querySelector('nav');
-        if (nav.style.display == 'block')
-        {
-            nav.style.display = "none";
-        }
-        else
-        {
-            nav.style.display = "block";
-
-        }
-    });
-</script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
