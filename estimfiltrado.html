@@ -26,7 +26,10 @@
     </nav>
     <main class="main">
         <h2>Estimacion de Filtrado Glomerular <i class="fa-solid fa-calculator"></i></h2>
-        
+        <div class="pacienteListaDiv">
+        <select class="selpat" value="-1"></select><a class="addpat" href="javascript:mostrarAddPaciente()">Agregar paciente</a> <a class="rmvpat" href="javascript:db_deletePacientes()">Eliminar Pacientes</a>
+        </div>
+        <p class="storageError"></p>
         <h3 id="schwartztlt">Formula de Schwartz</h3>
         <fieldset class="schwartzFs">
 
@@ -41,7 +44,7 @@
             <label for="CrPso">Creatinina Plasmatica(mg/dl):</label>
             <input type="number" id="CrPso" name="CrPso" min="0">
             <button id="schwartzbtn" class="btnAceptar" title="FGR=Talla * K / CrP">Calcular</button>
-            <label id="schwartzRes"></label>
+            <label id="schwartzRes"></label><a class="asave" href="javascript:guardarMedicion(2)">Guardar</a>
         </fieldset>
 
         <h3>Formula de Schwartz (Modificada)</h3><!--usa 0.41-->
@@ -51,7 +54,22 @@
             <label for="CrPsm">Creatinina Plasmatica(mg/dl):</label>
             <input type="number" id="CrPsm" name="CrPsm" min="0">
             <button id="schwartzmbtn" class="btnAceptar" title="FGR=Talla * K / CrP">Calcular</button>
-            <label id="schwartzmRes"></label>
+            <label id="schwartzmRes"></label><a class="asave" href="javascript:guardarMedicion(3)">Guardar</a>
+        </fieldset>
+        <fieldset class="pacientedatafs">
+            <h4>Paciente</h4>
+            <label id="ptlbl">Talla:</label>
+            <label id="ptum">Ultima Médición:</label>
+            <fieldset class="medicionespreviasfs">
+                <h4>Mediciones Previas</h4>
+                <table id="pmtable">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo Medicion</th>
+                        <th>ClCr</th>
+                    </tr>
+                </table>
+            </fieldset>
         </fieldset>
     </main>
     <div class="aside">
