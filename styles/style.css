@@ -71,9 +71,11 @@ input[type="number"]
     border:   0.1rem  solid black;
     border-right:   0.2rem  solid white;
     box-shadow: inset 0px 0px 10px black;
-    
-    
-
+    font-family: 'Raleway', sans-serif;
+}
+.main p
+{
+    font-family: 'Raleway', sans-serif;
 }
 .pacientedatafs
 {
